@@ -5,11 +5,24 @@ public class Funcionarios {
     private String nome;
     private String cargo;
     private double salario;
+    private String[] listaDeCArgos = {"Gerente","Programador","Analista"};
 
-    public Funcionarios(String nome, String cargo, double salario) {
-        this.nome = nome;
-        this.cargo = cargo;
-        this.salario = salario;
+    public Funcionarios(String nome, int cargo, double salario) {
+        if (cargo < 0 && cargo > 2 && nome.isEmpty() && salario < 1320){
+            System.out.println("valores faltando");
+        }else {
+            this.nome = nome;
+            this.cargo = this.listaDeCArgos[cargo];
+            this.salario = salario;
+        }
+    }
+
+    public void aumentoSalarial(double percentual) {
+        if (percentual < 0) {
+            System.out.println("não pode ser numero negativo");
+        } else {
+            this.salario = this.salario * (percentual / 100) + this.salario;
+        }
     }
 
     public String getNome() {
@@ -37,6 +50,10 @@ public class Funcionarios {
     }
 
     public void setSalario(double salario) {
-        this.salario = salario;
+        if (salario < 1320) {
+            System.out.println("O salário não pode ser menor do que o salário mínimo");
+        }else {
+            this.salario = salario;
+        }
     }
 }
