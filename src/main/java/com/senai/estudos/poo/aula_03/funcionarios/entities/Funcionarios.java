@@ -1,5 +1,8 @@
 package com.senai.estudos.poo.aula_03.funcionarios.entities;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Funcionarios {
 
     private String nome;
@@ -8,8 +11,9 @@ public class Funcionarios {
     private String[] listaDeCArgos = {"Gerente","Programador","Analista"};
 
     public Funcionarios(String nome, int cargo, double salario) {
-        if (cargo < 0 && cargo > 2 && nome.isEmpty() && salario < 1320){
-            System.out.println("valores faltando");
+        if (salario < 1320 || nome.isEmpty()){
+            System.out.println(nome.isEmpty() ? "O nome não deve ser nulo" : "");
+            System.out.println(salario < 1320 ? "O Salário deve ser maior do que 1320" : "");
         }else {
             this.nome = nome;
             this.cargo = this.listaDeCArgos[cargo];
@@ -19,9 +23,9 @@ public class Funcionarios {
 
     public void aumentoSalarial(double percentual) {
         if (percentual < 0) {
-            System.out.println("não pode ser numero negativo");
+            System.out.println("o valor do percentual não pode ser um numero negativo");
         } else {
-            this.salario = this.salario * (percentual / 100) + this.salario;
+            this.salario += salario * (percentual / 100);
         }
     }
 
@@ -55,5 +59,17 @@ public class Funcionarios {
         }else {
             this.salario = salario;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Funcionarios that = (Funcionarios) o;
+        return Double.compare(salario, that.salario) == 0 && Objects.equals(nome, that.nome) && Objects.equals(cargo, that.cargo) && Objects.deepEquals(listaDeCArgos, that.listaDeCArgos);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, cargo, salario, Arrays.hashCode(listaDeCArgos));
     }
 }
