@@ -9,7 +9,6 @@ public class Paciente {
         this.idade = idade;
     }
 
-    // Método para apresentar as informações do paciente
     @Override
     public String toString() {
         return "Nome: " + nome + " | Idade: " + idade;
