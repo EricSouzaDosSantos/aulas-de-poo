@@ -2,6 +2,7 @@ package com.senai.estudos.poo.aula_04.escola.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Coordenadores extends Funcionario{
     private List<Professores> listaDeprofessores = new ArrayList<>();
@@ -21,6 +22,6 @@ public class Coordenadores extends Funcionario{
 
     @Override
     public String toString() {
-        return "Nome: "+super.getNome()+"\nSalario: "+super.getSalario()+"\nEquipe de professores: "+listaDeprofessores.stream().toString();
+        return "Nome: "+super.getNome()+"\nSalario: "+super.getSalario()+"\nEquipe de professores: "+listaDeprofessores.stream().map(Professores::getNome).collect(Collectors.joining(", "));
     }
 }
