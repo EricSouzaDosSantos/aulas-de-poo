@@ -9,19 +9,23 @@ public class SistemaPedidos {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+            try{
             System.out.println("\nMenu de Pedidos:");
-            System.out.println("1. Criar Pedido Online");
-            System.out.println("2. Criar Pedido Presencial");
-            System.out.println("3. Sair");
+            System.out.println("1 - Criar Pedido Online");
+            System.out.println("2 - Criar Pedido Presencial");
+            System.out.println("3 - Sair");
             System.out.print("Escolha uma opção: ");
             int opcao = scanner.nextInt();
 
             if (opcao == 3) {
                 System.out.println("Saindo...");
                 break;
+            } else if (opcao > 3 || opcao < 0) {
+                System.out.println("Opção inválida!");
+                continue;
             }
 
-            System.out.print("Número do pedido: ");
+                System.out.print("Número do pedido: ");
             int numero = scanner.nextInt();
             System.out.print("Valor total do pedido: R$");
             double valorTotal = scanner.nextDouble();
@@ -36,9 +40,12 @@ public class SistemaPedidos {
                 double desconto = scanner.nextDouble();
                 Pedido pedido = new PedidoPresencial(numero, valorTotal, desconto);
                 pedido.exibirDetalhes();
-            } else {
-                System.out.println("Opção inválida!");
             }
+        }
+        catch (Exception e){
+            System.out.println("Digite um número válido.");
+            scanner.nextLine();
+        }
         }
 
         scanner.close();
