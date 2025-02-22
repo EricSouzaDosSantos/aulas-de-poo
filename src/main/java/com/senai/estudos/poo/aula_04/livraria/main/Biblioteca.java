@@ -3,6 +3,7 @@ package com.senai.estudos.poo.aula_04.livraria.main;
 import com.senai.estudos.poo.aula_04.livraria.model.*;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,32 +12,37 @@ public class Biblioteca {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int opcao;
+        int opcao = 0;
         do {
-            System.out.println("\nMenu:");
-            System.out.println("1. Adicionar Livro Físico");
-            System.out.println("2. Adicionar Livro Digital");
-            System.out.println("3. Listar Livros");
-            System.out.println("0. Sair");
-            System.out.print("Escolha uma opção: ");
-            opcao = scanner.nextInt();
-            scanner.nextLine();
+            try {
+                System.out.println("\nMenu:");
+                System.out.println("1. Adicionar Livro Físico");
+                System.out.println("2. Adicionar Livro Digital");
+                System.out.println("3. Listar Livros");
+                System.out.println("0. Sair");
+                System.out.print("Escolha uma opção: ");
+                opcao = scanner.nextInt();
+                scanner.nextLine();
 
-            switch (opcao) {
-                case 1:
-                    adicionarLivroFisico();
-                    break;
-                case 2:
-                    adicionarLivroDigital();
-                    break;
-                case 3:
-                    listarLivros();
-                    break;
-                case 0:
-                    System.out.println("Saindo...");
-                    break;
-                default:
-                    System.out.println("Opção inválida. Tente novamente.");
+                switch (opcao) {
+                    case 1:
+                        adicionarLivroFisico();
+                        break;
+                    case 2:
+                        adicionarLivroDigital();
+                        break;
+                    case 3:
+                        listarLivros();
+                        break;
+                    case 0:
+                        System.out.println("Saindo...");
+                        break;
+                    default:
+                        System.out.println("Opção inválida. Tente novamente.");
+                }
+            }catch (InputMismatchException e){
+                System.out.println("Digite um numero válido.");
+                scanner.nextLine();
             }
         } while (opcao != 0);
     }
