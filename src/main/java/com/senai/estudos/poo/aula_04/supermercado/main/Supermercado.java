@@ -4,10 +4,7 @@ import com.senai.estudos.poo.aula_04.supermercado.entities.Alimento;
 import com.senai.estudos.poo.aula_04.supermercado.entities.Eletronico;
 import com.senai.estudos.poo.aula_04.supermercado.entities.Produto;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Supermercado {
 
@@ -15,67 +12,70 @@ public class Supermercado {
     public static List<Produto> listaDeProdutos = new ArrayList<>();
     public static List<Alimento> listaDeAlimentos = new ArrayList<>();
     public static List<Eletronico> listaDeEletronicos = new ArrayList<>();
-    public static List<Object> todosProdutos = new ArrayList<>();
+    public static List<Produto> todosProdutos = new ArrayList<>();
 
     public static void main(String[] args) {
 
         byte opcao = 0;
         do {
+            try {
+                System.out.println("Supermercado");
+                System.out.println("Digite a opção desejada:");
+                System.out.println("1 - Cadastrar produto");
+                System.out.println("2 - Listar produtos");
+                System.out.println("3 - Sair");
+                opcao = scanner.nextByte();
+                scanner.nextLine();
 
-            System.out.println("Supermercado");
-            System.out.println("Digite a opção desejada:");
-            System.out.println("1 - Cadastrar produto");
-            System.out.println("2 - Listar produtos");
-            System.out.println("3 - Sair");
-            opcao = scanner.nextByte();
-            scanner.nextLine();
+                switch (opcao) {
+                    case 1:
+                        byte productOption = 0;
+                        System.out.println("O que deseja cadastrar?");
+                        System.out.println("1 - Alimento");
+                        System.out.println("2 - Eletrônico");
+                        System.out.println("3 - Outros");
+                        productOption = scanner.nextByte();
+                        scanner.nextLine();
+                        if (productOption == 1) {
+                            cadastrarAlimento();
+                        } else if (productOption == 2) {
+                            cadastrarEletronico();
+                        } else if (productOption == 3) {
+                            cadastrarProduto();
+                        } else {
+                            System.out.println("Opção inválida");
+                        }
 
-            switch (opcao) {
-                case 1:
-                    byte productOption = 0;
-                    System.out.println("O que deseja cadastrar?");
-                    System.out.println("1 - Alimento");
-                    System.out.println("2 - Eletrônico");
-                    System.out.println("3 - Outros");
-                    productOption = scanner.nextByte();
-                    scanner.nextLine();
-                    if (productOption == 1) {
-                        cadastrarAlimento();
-                    } else if (productOption == 2) {
-                        cadastrarEletronico();
-                    } else if (productOption == 3) {
-                        cadastrarProduto();
-                    } else {
-                        System.out.println("Opção inválida");
-                    }
+                        break;
 
-                    break;
+                    case 2:
+                        byte listOption = 0;
+                        System.out.println("O que deseja listar:");
+                        System.out.println("1 - Todos os Produtos");
+                        System.out.println("2 - Alimentos");
+                        System.out.println("3 - Eletrônicos");
+                        System.out.println("4 - Outros");
+                        listOption = scanner.nextByte();
+                        scanner.nextLine();
 
-                case 2:
-                    byte listOption = 0;
-                    System.out.println("O que deseja listar:");
-                    System.out.println("1 - Todos os Produtos");
-                    System.out.println("2 - Alimentos");
-                    System.out.println("3 - Eletrônicos");
-                    System.out.println("4 - Outros");
-                    listOption = scanner.nextByte();
-                    scanner.nextLine();
+                        if (listOption == 1) {
+                            listarProdutos();
+                        } else if (listOption == 2) {
+                            listarAlimentos();
+                        } else if (listOption == 3) {
+                            listarEletronicos();
+                        } else if (listOption == 4) {
+                            listarOutros();
+                        } else {
+                            System.out.println("Opção inválida");
+                        }
 
-                    if (listOption == 1) {
-                        listarProdutos();
-                    } else if (listOption == 2) {
-                        listarAlimentos();
-                    } else if (listOption == 3) {
-                        listarEletronicos();
-                    } else if (listOption == 4) {
-                        listarOutros();
-                    } else {
-                        System.out.println("Opção inválida");
-                    }
-
-                    break;
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Digite um número válido.");
+                scanner.nextLine();
             }
-
         } while (!(opcao == 3));
     }
 
