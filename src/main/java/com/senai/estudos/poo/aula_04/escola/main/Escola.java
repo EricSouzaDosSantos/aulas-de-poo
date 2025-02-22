@@ -4,6 +4,7 @@ import com.senai.estudos.poo.aula_04.escola.entities.Coordenadores;
 import com.senai.estudos.poo.aula_04.escola.entities.Professores;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,50 +15,54 @@ public class Escola {
 
     public static void main(String[] args) {
         byte optionSwitch = 0;
-
         do {
-            System.out.println("Digite a opção que você deseja:");
-            System.out.println("1 - Cadastrar um funcionario");
-            System.out.println("2 - Listar Algum funcionario");
-            System.out.println("3 - Sair");
-            optionSwitch = scanner.nextByte();
-            scanner.nextLine();
+            try {
+                System.out.println("Digite a opção que você deseja:");
+                System.out.println("1 - Cadastrar um funcionario");
+                System.out.println("2 - Listar Algum funcionario");
+                System.out.println("3 - Sair");
+                optionSwitch = scanner.nextByte();
+                scanner.nextLine();
 
-            switch (optionSwitch) {
-                case 1:
-                    System.out.println("Digite o tipo de funcionario que deseja cadastrar: ");
-                    System.out.println("1 - Professor");
-                    System.out.println("2 - Coordenador");
-                    byte tipoFuncionario = scanner.nextByte();
-                    scanner.nextLine();
-                    if (tipoFuncionario == 1) {
-                        cadastrarProfessor();
-                    } else if (tipoFuncionario == 2) {
-                        cadastrarCoordenadores();
-                    } else {
+                switch (optionSwitch) {
+                    case 1:
+                        System.out.println("Digite o tipo de funcionario que deseja cadastrar: ");
+                        System.out.println("1 - Professor");
+                        System.out.println("2 - Coordenador");
+                        byte tipoFuncionario = scanner.nextByte();
+                        scanner.nextLine();
+                        if (tipoFuncionario == 1) {
+                            cadastrarProfessor();
+                        } else if (tipoFuncionario == 2) {
+                            cadastrarCoordenadores();
+                        } else {
+                            System.out.println("Opção inválida.");
+                        }
+                        break;
+                    case 2:
+                        System.out.println("Digite o tipo de funcionario que deseja listar: ");
+                        System.out.println("1 - Professores");
+                        System.out.println("2 - Coordenadores");
+                        byte tipoListar = scanner.nextByte();
+                        scanner.nextLine();
+                        if (tipoListar == 1) {
+                            listarProfessores();
+                        } else if (tipoListar == 2) {
+                            listarCoordenadores();
+                        } else {
+                            System.out.println("Opção inválida.");
+                        }
+                        break;
+                    case 3:
+                        System.out.println("Saindo...");
+                        break;
+                    default:
                         System.out.println("Opção inválida.");
-                    }
-                    break;
-                case 2:
-                    System.out.println("Digite o tipo de funcionario que deseja listar: ");
-                    System.out.println("1 - Professores");
-                    System.out.println("2 - Coordenadores");
-                    byte tipoListar = scanner.nextByte();
-                    scanner.nextLine();
-                    if (tipoListar == 1) {
-                        listarProfessores();
-                    } else if (tipoListar == 2) {
-                        listarCoordenadores();
-                    } else {
-                        System.out.println("Opção inválida.");
-                    }
-                    break;
-                case 3:
-                    System.out.println("Saindo...");
-                    break;
-                default:
-                    System.out.println("Opção inválida.");
-                    break;
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Digite um número válido.");
+                scanner.nextLine();
             }
         } while (optionSwitch != 3);
     }
@@ -82,9 +87,16 @@ public class Escola {
             System.out.println("Digite o salario do coordenador:");
             double salario = scanner.nextDouble();
             scanner.nextLine();
+            int listaQuantidadeDeProfessor = listaDeProfessores.size();
+            byte quantidadeDeProfessores = 0;
+            do {
             System.out.println("Quantos professores deseja adicionar:");
-            byte quantidadeDeProfessores = scanner.nextByte();
-            scanner.nextLine();
+                quantidadeDeProfessores = scanner.nextByte();
+                scanner.nextLine();
+                if (quantidadeDeProfessores > listaQuantidadeDeProfessor) {
+                    System.out.println("A quantidade de professores é menor que a quantidade que deseja adicionar.");
+                }
+            }while (listaQuantidadeDeProfessor < quantidadeDeProfessores);
             List<Professores> professoresDoCoordenador = new ArrayList<>();
             for (int i = 0; i < quantidadeDeProfessores; i++) {
                 System.out.println("Digite o ID de um dos professores que deseja adicionar:");
@@ -118,6 +130,7 @@ public class Escola {
     }
 
     static void listarCoordenadores() {
+
         if (listaDeCoordenadores.isEmpty()) {
             System.out.println("Não existem coordenadores cadastrados.");
         } else {
