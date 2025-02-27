@@ -1,4 +1,6 @@
-package com.senai.estudos.poo.aula_05;
+package com.senai.estudos.poo.aula_05.relatorios.entities;
+
+import com.senai.estudos.poo.aula_05.hotel.Relatorio;
 
 class RelatorioCSV extends Relatorio {
     public RelatorioCSV(String nome) {

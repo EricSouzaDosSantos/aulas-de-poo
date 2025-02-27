@@ -1,4 +1,4 @@
-package com.senai.estudos.poo.aula_05;
+package com.senai.estudos.poo.aula_05.relatorios.entities;
 
 abstract class Relatorio {
     protected String nome;
