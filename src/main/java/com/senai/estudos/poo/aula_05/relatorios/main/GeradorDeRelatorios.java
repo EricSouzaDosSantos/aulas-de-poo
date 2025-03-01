@@ -1,9 +1,6 @@
 package com.senai.estudos.poo.aula_05.relatorios.main;
 
-import com.senai.estudos.poo.aula_05.Relatorio;
-import com.senai.estudos.poo.aula_05.RelatorioCSV;
-import com.senai.estudos.poo.aula_05.RelatorioJSON;
-import com.senai.estudos.poo.aula_05.RelatorioPDF;
+import com.senai.estudos.poo.aula_05.relatorios.entities.*;
 
 import java.util.ArrayList;
 import java.util.List;

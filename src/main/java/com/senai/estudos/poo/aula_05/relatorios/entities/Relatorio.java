@@ -1,6 +1,6 @@
 package com.senai.estudos.poo.aula_05.relatorios.entities;
 
-abstract class Relatorio {
+public abstract class Relatorio {
     protected String nome;
 
     public Relatorio(String nome) {

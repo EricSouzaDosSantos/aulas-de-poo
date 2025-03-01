@@ -1,8 +1,8 @@
 package com.senai.estudos.poo.aula_05.relatorios.entities;
 
-import com.senai.estudos.poo.aula_05.hotel.Relatorio;
+import com.senai.estudos.poo.aula_05.relatorios.entities.Relatorio;
 
-class RelatorioPDF extends Relatorio {
+public class RelatorioPDF extends Relatorio {
     public RelatorioPDF(String nome) {
         super(nome);
     }
