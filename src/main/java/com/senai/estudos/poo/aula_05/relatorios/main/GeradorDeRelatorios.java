@@ -42,9 +42,9 @@ public class GeradorDeRelatorios {
         String nome = scanner.nextLine();
 
         System.out.println("Escolha o formato:");
-        System.out.println("1. PDF");
-        System.out.println("2. CSV");
-        System.out.println("3. JSON");
+        System.out.println("1 - PDF");
+        System.out.println("2 - CSV");
+        System.out.println("3 - JSON");
         System.out.print("Opção: ");
         int tipo = scanner.nextInt();
         scanner.nextLine();

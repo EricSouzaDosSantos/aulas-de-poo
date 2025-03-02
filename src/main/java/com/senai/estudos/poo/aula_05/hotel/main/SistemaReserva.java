@@ -14,10 +14,10 @@ public class SistemaReserva {
         int opcao;
         do {
             System.out.println("\n=== Menu de Reservas ===");
-            System.out.println("1. Criar Reserva Simples");
-            System.out.println("2. Criar Reserva VIP");
-            System.out.println("3. Listar Reservas");
-            System.out.println("4. Sair");
+            System.out.println("1 - Criar Reserva Simples");
+            System.out.println("2 - Criar Reserva VIP");
+            System.out.println("3 - Listar Reservas");
+            System.out.println("4 - Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine();
