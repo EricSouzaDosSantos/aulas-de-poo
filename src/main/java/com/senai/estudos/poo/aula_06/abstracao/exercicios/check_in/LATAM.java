@@ -6,11 +6,11 @@ class LATAM implements CheckIn {
         if (documento == null || documento.isEmpty()) {
             throw new IllegalArgumentException("Documento inválido!");
         }
-        System.out.println("Documento " + documento + " validado com sucesso.");
+        System.out.println("Documento " + documento + " validado com sucesso pela latam.");
     }
 
     @Override
     public void emitirCartaoEmbarque(String passageiro) {
-        System.out.println("Cartão de embarque emitido para: " + passageiro);
+        System.out.println("Cartão de embarque da latam emitido para: " + passageiro);
     }
 }
